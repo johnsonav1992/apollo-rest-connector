@@ -20,9 +20,8 @@ extend schema
   http: {
     baseURL: "https://ecommerce.demo-api.apollo.dev/"
     headers: [
-      # If your API requires headers, add them here and in your router.yaml file.
-      # Example:
-      # { name: "name", value: "{$config.apiKey}" }
+      # Map X-Ecomm-Token from client to Authorization header for ecomm API
+      { name: "Authorization", from: "x-ecomm-token" }
     ]
   }
 )
@@ -32,6 +31,10 @@ extend schema
   name: "jsonplaceholder"
   http: {
     baseURL: "https://jsonplaceholder.typicode.com"
+    headers: [
+      # Map X-JSONPlaceholder-Token from client to Authorization header for jsonplaceholder API
+      { name: "Authorization", from: "x-jsonplaceholder-token" }
+    ]
   }
 )
 
