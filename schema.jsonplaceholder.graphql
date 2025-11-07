@@ -1,0 +1,58 @@
+extend schema
+  @link(
+    url: "https://specs.apollo.dev/federation/v2.11"
+  )
+  @link(
+    url: "https://specs.apollo.dev/connect/v0.2"
+    import: ["@connect", "@source"]
+  )
+
+@source(
+  name: "jsonplaceholder"
+  http: {
+    baseURL: "https://jsonplaceholder.typicode.com"
+    headers: [
+      # Map X-JSONPlaceholder-Token from client to Authorization header for jsonplaceholder API
+      { name: "Authorization", from: "x-jsonplaceholder-token" }
+    ]
+  }
+)
+
+type Post {
+  id: ID!
+  userId: Int
+  title: String
+  body: String
+}
+
+type Query {
+  # Fetch all posts from JSONPlaceholder API
+  posts: [Post]
+    @connect(
+      source: "jsonplaceholder"
+      http: { GET: "/posts" }
+      selection: """
+      $ {
+        id
+        userId
+        title
+        body
+      }
+      """
+    )
+
+  # Fetch a single post by ID
+  post(id: ID!): Post
+    @connect(
+      source: "jsonplaceholder"
+      http: { GET: "/posts/{$args.id}" }
+      selection: """
+      $ {
+        id
+        userId
+        title
+        body
+      }
+      """
+    )
+}
