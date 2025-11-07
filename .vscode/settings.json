@@ -1,0 +1,13 @@
+{
+    "terminal.integrated.profiles.osx": {
+      "graphos": {
+        "path": "zsh",
+        "args": ["-l"],
+        "env": {
+          "APOLLO_KEY": "service:test-rest-connector-17qx6r7:zVZ_CSRQZANVhk03Bu08ZA",
+          "APOLLO_GRAPH_REF": "test-rest-connector-17qx6r7@current",
+        }
+      }
+    },
+    "terminal.integrated.defaultProfile.osx": "graphos"
+  }
