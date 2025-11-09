@@ -1,2 +1,10 @@
 # .env to store APOLLO_KEY
 .env
+
+# Node modules
+node_modules/
+
+# Generated schema files (built from TypeScript sources)
+schema.ecomm.graphql
+schema.jsonplaceholder.graphql
+supergraph-schema.graphql

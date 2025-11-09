@@ -4,3 +4,9 @@ connectors:
   #   subgraph.source_name:
   #     $config:
   #       apiKey: ${env.API_KEY}
+
+cors:
+  policies:
+    - origins:
+        - http://localhost:3000
+      allow_credentials: true

@@ -1,0 +1,17 @@
+{
+  "name": "apollo-rest-connector",
+  "version": "1.0.0",
+  "description": "Apollo REST connector supergraph",
+  "scripts": {
+    "build:schemas": "tsx schemas/ecomm/index.ts && tsx schemas/jsonplaceholder/index.ts",
+    "dev": "npm run build:schemas && rover dev --supergraph-config supergraph.yaml --router-config router.yaml",
+    "compose": "npm run build:schemas && rover supergraph compose --config supergraph.yaml > supergraph-schema.graphql"
+  },
+  "keywords": ["apollo", "graphql", "rest", "supergraph"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "@types/node": "^22.10.2"
+  }
+}

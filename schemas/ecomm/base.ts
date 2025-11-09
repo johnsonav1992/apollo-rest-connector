@@ -1,4 +1,6 @@
+import { gql } from '../gql'
 
+export const base = gql`
   extend schema
     @link(
       url: "https://specs.apollo.dev/federation/v2.11"
@@ -18,32 +20,4 @@
       ]
     }
   )
-
-
-
-  type Product {
-    id: ID!
-    name: String
-    description: String
-    slug: String
-    primaryTag: String
-  }
-
-
-
-  extend type Query {
-    products: [Product]
-      @connect(
-        source: "ecomm"
-        http: { GET: "/products" }
-        selection: """
-        $.products {
-          id
-          name
-          description
-          slug
-          primaryTag: tags->first.name
-        }
-        """
-      )
-  }
+`
